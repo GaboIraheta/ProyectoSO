@@ -1,0 +1,15 @@
+# Caso donde Clock gana claramente (LRU no siempre es mejor).
+# LRU solo mira QUE TAN RECIENTE fue el ultimo uso y desaloja paginas
+# que vuelven a pedirse poco despues. La manecilla de Clock, al no
+# reordenar en cada acierto, conserva por casualidad paginas que se reutilizan.
+#
+# Resultado esperado (20 referencias, 4 marcos):
+#   LRU  : 14 fallos, 6 aciertos (70.0% fallos)
+#   Clock: 9 fallos, 11 aciertos (45.0% fallos)
+# (Clock: bit R=1 al cargar y al acertar; la manecilla avanza tras reemplazar)
+
+# Numero de marcos
+4
+
+# Secuencia de referencias
+2 1 4 3 6 2 3 5 3 2 6 3 1 5 1 2 6 3 5 1

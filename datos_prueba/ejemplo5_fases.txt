@@ -1,0 +1,16 @@
+# Secuencia mas realista con 5 marcos y 40 referencias en fases:
+# el programa trabaja con un grupo de paginas, cambia a otro grupo
+# y luego regresa al primero (localidad de referencia).
+# Ambos algoritmos quedan cerca: Clock es una buena aproximacion de LRU.
+#
+# Resultado esperado (40 referencias, 5 marcos):
+#   LRU  : 18 fallos, 22 aciertos (45.0% fallos)
+#   Clock: 19 fallos, 21 aciertos (47.5% fallos)
+# (Clock: bit R=1 al cargar y al acertar; la manecilla avanza tras reemplazar)
+
+# Numero de marcos
+5
+
+# Secuencia de referencias
+1 2 3 1 2 3 4 1 2 3 4 1 6 7 8 9 6 7 8 9
+6 7 1 2 3 4 1 2 3 4 10 11 12 10 11 12 1 2 3 4

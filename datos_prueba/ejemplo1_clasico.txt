@@ -1,0 +1,14 @@
+# Secuencia clasica de los libros de Sistemas Operativos (Silberschatz).
+# Sirve para verificar el Modulo 2: LRU con 3 marcos DEBE dar 12 fallos.
+# Clock se acerca a LRU pero falla un poco mas.
+#
+# Resultado esperado (20 referencias, 3 marcos):
+#   LRU  : 12 fallos, 8 aciertos (60.0% fallos)
+#   Clock: 14 fallos, 6 aciertos (70.0% fallos)
+# (Clock: bit R=1 al cargar y al acertar; la manecilla avanza tras reemplazar)
+
+# Numero de marcos
+3
+
+# Secuencia de referencias
+7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1

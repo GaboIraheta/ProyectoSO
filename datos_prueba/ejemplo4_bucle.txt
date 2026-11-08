@@ -1,0 +1,15 @@
+# Peor caso para AMBOS: un ciclo de 5 paginas con solo 4 marcos.
+# Cada pagina se desaloja justo antes de volver a necesitarse:
+# 100% de fallos en LRU y en Clock. Muestra que ningun algoritmo
+# compensa la falta de marcos.
+#
+# Resultado esperado (15 referencias, 4 marcos):
+#   LRU  : 15 fallos, 0 aciertos (100.0% fallos)
+#   Clock: 15 fallos, 0 aciertos (100.0% fallos)
+# (Clock: bit R=1 al cargar y al acertar; la manecilla avanza tras reemplazar)
+
+# Numero de marcos
+4
+
+# Secuencia de referencias
+1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
