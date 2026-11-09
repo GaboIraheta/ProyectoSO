@@ -1,6 +1,5 @@
-#define _POSIX_C_SOURCE 200809L
-
 #include "clock/clock.h"
+#include "common/compat.h"
 #include "common/input.h"
 #include "lru/lru.h"
 #include "simulator/simulator.h"
@@ -28,7 +27,7 @@ static MenuOption menu_choose(void)
                "Opcion: ");
         fflush(stdout);
 
-        if (getline(&line, &size, stdin) == -1) {
+        if (compat_getline(&line, &size, stdin) == -1) {
             printf("\n");
             break;
         }

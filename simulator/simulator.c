@@ -1,8 +1,6 @@
-#define _POSIX_C_SOURCE 200809L
-
 #include "simulator.h"
 
-#include <unistd.h>
+#include "../common/compat.h"
 
 #include "../clock/clock.h"
 #include "../lru/lru.h"
@@ -82,7 +80,14 @@ double simulator_fault_rate(const SimulationResult *result)
 /* Solo usa color si la salida es una terminal y NO_COLOR no esta definido. */
 static bool use_color(void)
 {
-    return isatty(STDOUT_FILENO) && getenv("NO_COLOR") == NULL;
+    static int cached = -1;
+
+    if (cached < 0) {
+        cached = compat_stdout_is_tty() &&
+                 getenv("NO_COLOR") == NULL &&
+                 compat_enable_ansi();
+    }
+    return cached != 0;
 }
 
 /* Imprime texto coloreado ocupando "width" columnas visibles. */

@@ -1,6 +1,5 @@
-#define _POSIX_C_SOURCE 200809L
-
 #include "input.h"
+#include "compat.h"
 
 #include <errno.h>
 #include <limits.h>
@@ -275,7 +274,7 @@ int input_read_from_file(
     bool frames_read = false;
     int status = SIM_OK;
 
-    while (getline(&line, &line_size, file) != -1) {
+    while (compat_getline(&line, &line_size, file) != -1) {
 
         if (is_blank_or_comment(line)) {
             continue;
@@ -373,7 +372,7 @@ int input_read_interactive(SimulationInput *input)
 
         fflush(stdout);
 
-        if (getline(&line, &line_size, stdin) == -1) {
+        if (compat_getline(&line, &line_size, stdin) == -1) {
 
             fprintf(stderr,
                     "Error: fin de entrada al leer marcos.\n");
@@ -401,7 +400,7 @@ int input_read_interactive(SimulationInput *input)
 
         fflush(stdout);
 
-        if (getline(&line, &line_size, stdin) == -1) {
+        if (compat_getline(&line, &line_size, stdin) == -1) {
 
             fprintf(stderr,
                     "Error: fin de entrada al leer referencias.\n");
