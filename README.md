@@ -5,75 +5,23 @@ Programa de terminal en C que simula los algoritmos de reemplazo de páginas
 marcos, los aciertos y fallos, las páginas desalojadas, un resumen con
 porcentajes y una comparación entre ambos algoritmos.
 
-## Requisitos
+## Ejecutar (Windows 11)
 
-- Linux (o cualquier sistema tipo POSIX)
-- `gcc` y `make`
-
-En Fedora: `sudo dnf install gcc make`. En Debian/Ubuntu: `sudo apt install build-essential`.
-
-## Compilar
-
-Desde la raíz del proyecto:
-
-```bash
-make
-```
-
-Esto genera el ejecutable `build/simulador`. Otros comandos:
-
-| Comando      | Qué hace                                              |
-|--------------|-------------------------------------------------------|
-| `make`       | Compila el simulador                                  |
-| `make test`  | Compila y ejecuta las pruebas (LRU, Clock, simulador) |
-| `make windows` | Genera `build/simulador.exe` para Windows (ver abajo) |
-| `make clean` | Borra los binarios generados                          |
-
-### Windows 11
-
-El código es portable (no depende de funciones exclusivas de Linux), y hay dos
-formas de obtener el `.exe`:
-
-**A) Desde Linux (compilación cruzada).** Instalar MinGW-w64 y compilar:
-
-```bash
-sudo dnf install mingw64-gcc          # Fedora
-# sudo apt install gcc-mingw-w64-x86-64   # Debian/Ubuntu
-make windows
-```
-
-Se genera `build/simulador.exe`, enlazado estáticamente, así que se puede copiar
-a cualquier Windows 11 sin instalar nada más.
-
-**B) Directamente en Windows.** Instalar [MSYS2](https://www.msys2.org/), abrir
-la terminal "MSYS2 UCRT64" y ejecutar:
-
-```bash
-pacman -S mingw-w64-ucrt-x86_64-gcc make
-make
-```
-
-Para ejecutarlo en Windows, usar **Windows Terminal** o PowerShell:
+El ejecutable ya está compilado en [build/simulador.exe](build/simulador.exe);
+no hace falta instalar nada. Abrir **Windows Terminal** o **PowerShell** en la
+carpeta del proyecto y ejecutar:
 
 ```powershell
+# Con un archivo de entrada
 .\build\simulador.exe datos_prueba\ejemplo1_clasico.txt
+
+# Interactivo: el programa pide los marcos y las referencias
+.\build\simulador.exe
 ```
 
-## Ejecutar
+(No usar doble clic: la ventana se cierra al terminar.)
 
-Con un archivo de entrada:
-
-```bash
-./build/simulador datos_prueba/ejemplo1_clasico.txt
-```
-
-O de forma interactiva (el programa pide los datos):
-
-```bash
-./build/simulador
-```
-
-En ambos casos, después de cargar los datos aparece un menú:
+Después de cargar los datos aparece un menú:
 
 ```
 1) LRU
